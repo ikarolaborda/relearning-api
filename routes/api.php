@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('test_return', function () {
+   $response = new \Illuminate\Http\Response(json_encode(['message' => 'You have reached a test response']));
+   $response->header('Content-Type','application/json');
+   return $response;
+});
