@@ -4,7 +4,7 @@ services:
         image: mysql:5.7
         command: --max-allowed-packet=67108864 --init-file /dump.sql
         ports:
-            - "33066:3306"
+            - "3316:3306"
         volumes:
             - /var/lib/mysql
             - ./my.cnf:/etc/mysql/my.cnf
