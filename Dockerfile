@@ -1,4 +1,4 @@
-FROM php:7.3-apache
+FROM php:7.4-apache
 
 RUN a2enmod rewrite
 
@@ -20,7 +20,7 @@ RUN apt-get update && \
         libssl-dev \
         zip unzip
 
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
 RUN docker-php-ext-install -j$(nproc) iconv pdo pdo_mysql gd bcmath
 
 RUN cd /usr/local/etc/php/conf.d/ && \
