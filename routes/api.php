@@ -24,3 +24,7 @@ Route::get('healthcheck', function() {
     return $response;
 });
 
+Route::get('/products', function () {
+    return \App\Models\Product::all();
+});
+

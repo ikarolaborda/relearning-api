@@ -45,6 +45,10 @@ WORKDIR /var/www/html
 
 RUN composer install
 
+RUN chmod -R ug+w /var/www/html/storage/
+RUN chown -R www-data:www-data /var/www/html/storage
+
 EXPOSE 80
 EXPOSE 9000
 CMD ["apache2-foreground"]
+
