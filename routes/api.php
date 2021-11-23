@@ -23,8 +23,9 @@ Route::get('healthcheck', function() {
     $response->header('Content-Type','application/json');
     return $response;
 });
-
-Route::get('/products', function () {
-    return \App\Models\Product::all();
+Route::namespace('Api')->prefix('products')->group(function() {
+    Route::get('/', [\App\Http\Controllers\Api\ProductController::class, 'index']);
+    Route::post('/',[\App\Http\Controllers\Api\ProductController::class,  'save']);
 });
+
 

@@ -50,5 +50,7 @@ RUN chown -R www-data:www-data /var/www/html/storage
 
 EXPOSE 80
 EXPOSE 9000
+COPY ./run.sh /tmp
 CMD ["apache2-foreground"]
+
 
