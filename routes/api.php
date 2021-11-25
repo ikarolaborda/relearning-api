@@ -23,9 +23,16 @@ Route::get('healthcheck', function() {
     $response->header('Content-Type','application/json');
     return $response;
 });
-Route::namespace('Api')->prefix('products')->group(function() {
-    Route::get('/', [\App\Http\Controllers\Api\ProductController::class, 'index']);
-    Route::post('/',[\App\Http\Controllers\Api\ProductController::class,  'save']);
+
+Route::group(['namespace' => 'Api'], function() {
+   Route::group(['prefix' => 'products'], function() {
+       Route::get('/', [\App\Http\Controllers\Api\ProductController::class, 'index']);
+       Route::get('/{id}', [\App\Http\Controllers\Api\ProductController::class, 'show']);
+       Route::post('/',[\App\Http\Controllers\Api\ProductController::class,  'save']);
+       Route::put('/',[\App\Http\Controllers\Api\ProductController::class, 'update']);
+       Route::patch('/',[\App\Http\Controllers\Api\ProductController::class, 'update']);
+       Route::delete('/{id}',[\App\Http\Controllers\Api\ProductController::class,'delete']);
+   });
 });
 
 
